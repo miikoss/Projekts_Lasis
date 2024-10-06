@@ -1,0 +1,69 @@
+#Darbs priekš semināra
+
+# Ielādē nepieciešamās bibliotēkas
+library(readxl)  # Excel failu lasīšanai
+library(dplyr)   # Datu apstrādei
+library(ggplot2) # Grafiku veidošanai
+
+# 1. Ielādē datus
+##Vispirms "set working directory" uz lejuplādēm
+
+data=read_excel("lasis_dati.xlsx")
+
+# 2. Datu apkopojums
+str(data)
+summary(data)
+
+# 3. Datu apstrāde
+# Pārvērst kolonnas par skaitliskām
+#Paskaidrojums kapēc
+concentration_columns=c("Mirex", "Hexachlorobenzene", "HCH_gamma", "Heptachlor_Epoxide", 
+                           "Dieldrin", "Endrin", "Total_Chlordane", "Total_DDT", 
+                           "Dioxin", "Total_Pesticides", "Total_PCBs")
+
+data[concentration_columns]=lapply(data[concentration_columns], function(x) as.numeric(as.character(x)))
+
+# Pārbaude, vai kādās kolonnās ir NA
+na_counts=colSums(is.na(data[concentration_columns]))
+print(na_counts)
+
+# Aprēķiniet vidējo un standartnovirzi
+statistics=data %>%
+  summarise(across(all_of(concentration_columns), list(mean = ~mean(.x, na.rm = TRUE), 
+                                                       sd = ~sd(.x, na.rm = TRUE))))
+
+print(statistics)
+
+# 4. Izveido grafikus
+
+library(ggplot2)
+library(dplyr)
+
+##dizainam, pakas priekš noformēšanas- šo man vajag paskaidrot
+install.packages("rstudioapi")
+rstudioapi::getThemes()
+
+# Histogrammas katrai vielai
+#Paskaidro ko tas viss nozīmē
+
+for (col in concentration_columns) {
+  # Filtrējiet datus, lai izslēgtu neskaitliskās vērtības
+  filtered_data=data %>% filter(!is.na(.data[[col]]))
+  
+  print(
+    ggplot(filtered_data, aes(x = .data[[col]])) +
+      geom_histogram(binwidth = 1, fill = "lightpink", color = "black", alpha = 0.7) +
+      labs(title = paste("Histogram for", col), x = col, y = "Frequency") +
+      theme_minimal()
+  )
+}
+
+# 5. Statistiskā analīze
+# Korelācijas matrica starp visām organiskajām vielām
+correlation_matrix=cor(data[concentration_columns], use = "pairwise.complete.obs")
+
+# 6. Izvade rezultātu tabulā
+write.csv(statistics, "statistical_summary.csv")
+
+# 7. Izvade korelācijas matrica
+write.csv(correlation_matrix, "correlation_matrix.csv")
