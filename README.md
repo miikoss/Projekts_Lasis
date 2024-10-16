@@ -3,11 +3,15 @@
 Veicot datu analīzi-var secināt, ka datu kopas nav normāli sadalītas, kā to apliecina zemas W/A vērtības un ļoti zemas p-vērtības.
 Jādara :
 
-a) datu transformācija;
-b) neparametriskie testi;
+a) datu transformācija; ---> nekas nemainās
+b) neparametriskie testi;---->
 c) robustās statistikas metodes.
 
 Ja dati nav normāli sadalīti, tas nozīmē, ka tie var būt izkaisīti vai satur daudz izņēmumu, kas apgrūtina secinājumu izdarīšanu.//kas un kā
+
+Paraugkopu salīdzināšana- kuras ar ko kapēc
+
+korelācija/kovariācijas analīze-kas un ko
 
 # Norādes priekš darba
 
