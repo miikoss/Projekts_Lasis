@@ -34,7 +34,7 @@ for (kolonnas_nosaukums in colnames(dati)) {
     qqnorm(vertibas)  # QQ diagramma
     qqline(vertibas, col = "red")  # QQ līnija
   } else {
-    cat(kolonnas_nosaukums, "nav skaitliska un tiks izlaista.\n")  # Ja kolonna nav skaitlisks, izdrukājam ziņu
+    cat(kolonnas_nosaukums, "nav skaitliska un tiks izlaista.\n")  # Ja kolonna nav skaitliska, izdrukājam ziņu
   }
 }
 
