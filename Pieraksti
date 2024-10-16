@@ -1,3 +1,19 @@
+# 0  Kā nosaka kā dati ir sadalīti
+
+Grafiskās metodes: Datu sadalījumu var vizualizēt, izmantojot histogrammas un QQ grafikus, kas palīdz noteikt, vai dati ir normāli sadalīti.
+Statistiskie testi: Tādi testi kā Shapiro-Wilk vai Kolmogorov-Smirnov tiek izmantoti, lai pārbaudītu, vai dati atbilst normālam sadalījumam.
+Kvantilēšana: Datus var sadalīt kvantilos (piemēram, kvartilos), kas ļauj analizēt datus četrās vienādās daļās un noteikt to izkliedi.
+
+Normāli sadalīti dati ir dati, kas seko normālā sadalījuma likumiem, kas raksturo nejaušībai pakļautu notikumu iestāšanās biežumu. Šādam sadalījumam ir raksturīga simetriska "zvanveida" forma, kurā lielākā daļa datu vērtību koncentrējas ap vidējo vērtību, un mazāk vērtību ir gan augšējā, gan apakšējā galā.
+Normālā sadalījuma iezīmes:
+Simetriskums: Datu sadalījums ir simetrisks attiecībā pret vidējo vērtību.
+Gausa līkne: Datu grafiskā attēlošana veido Gausa līkni, kas ir gluda un zvanveida.
+Standartnovirze: Aptuveni 68% datu atrodas vienas standartnovirzes attālumā no vidējās vērtības, 95% - divu standartnoviržu attālumā, un 99.7% - trīs standartnoviržu attālumā.
+
+Galvenās atšķirības:
+Normāli sadalīti dati: Simetriski ap vidējo, veido zvanveida līkni; piemēram, cilvēku auguma mērījumi.
+Neparasti sadalīti dati: Asimetriski, var saturēt izteiktas virsotnes vai garus astes; piemēram, ienākumu sadalījums.
+
 # 1 Parametriskās metodes
 Parametriskās metodes pieņem, ka dati seko noteiktai sadalījuma formai, parasti normālai sadalījumam. Tās balstās uz populācijas parametriem, piemēram, vidējo un dispersiju. Galvenie parametrisko metožu piemēri ir:
 1. t-tests
@@ -14,3 +30,29 @@ Neparametriskās metodes nepieprasa, lai dati sekotu noteiktai sadalījuma forma
 Mērķis: Salīdzina divu saistītu paraugu vidējos rādītājus, kad dati nav normāli sadalīti. Tas tiek izmantots kā alternatīva saistītajam t-testam.
 2. χ² tests (Chi-square tests)
 Mērķis: Salīdzina kvalitatīvus datus, lai noteiktu attiecības starp divām vai vairākām kategorijām. Tas tiek izmantots, lai novērtētu, vai novērotās frekvences atšķiras no gaidītajām frekvencēm.
+
+
+# 3 Korelācijas analīze
+
+ir statistiska metode, kas nosaka saistību starp divām vai vairākām mainīgajām. Tā palīdz izprast, vai un kā mainoties vienam mainīgajam mainas otrs. Korelācijas koeficients $$ r $$ ir skaitlis no -1 līdz 1, kas raksturo korelācijas stiprumu un virzienu:
+
+- Pozitīva korelācija ($$ r > 0 $$): Kad vienas mainīgās vērtība palielinās, otras mainīgās vērtība arī palielinās. Piemēram, ja cilvēks vairāk vingro, viņa fiziskā sagatavotība var uzlaboties.
+  
+- Negatīva korelācija ($$ r < 0 $$): Kad vienas mainīgās vērtība palielinās, otras mainīgās vērtība samazinās. Piemēram, ja palielinās attālums no skolas, skolēna sekmes var pasliktināties.
+
+- Nav korelācijas ($$ r \approx 0 $$): Nav skaidras saistības starp mainīgajiem. Tas nozīmē, ka vienas mainīgās izmaiņas neietekmē otras izmaiņas.
+
+### Korelācijas koeficienta interpretācija:
+- **Cieša korelācija**: $$ |r| > 0.7 $$
+- **Vidēja korelācija**: $$ 0.4 < |r| \leq 0.7 $$
+- **Vāja korelācija**: $$ |r| < 0.4 $$
+
+### Korelācijas analīzes metodes:
+1. **Pīrsona koeficients**: Mēra lineāro attiecību starp divām nepārtrauktām mainīgajām.
+2. **Spearmana rangs**: Mēra monotonu attiecību starp divām mainīgajām un ir piemērots, ja dati nav normāli sadalīti.
+3. **Kendall’s tau**: Vēl viena metode, kas novērtē sakarību starp rangiem.
+
+### Grafiskā attēlošana:
+Korelāciju var vizualizēt ar izkliedes diagrammām, kur katrs punkts atbilst datu pāriem. Ja punkti veido augošu līniju, tas norāda uz pozitīvu korelāciju; ja punkti veido dilstošu līniju, tas norāda uz negatīvu korelāciju.
+
+Korelācijas analīze ir svarīga datu analīzē un pētījumos, jo tā palīdz identificēt potenciālas attiecības starp dažādiem faktoriem un var kalpot par pamatu turpmākai analīzei vai eksperimentiem.
