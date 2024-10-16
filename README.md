@@ -1,6 +1,11 @@
 # Projekts_Lasis
 
-Šis tiks papildināts
+Veicot datu analīzi-var secināt, ka datu kopas nav normāli sadalītas, kā to apliecina zemas W/A vērtības un ļoti zemas p-vērtības.
+Jādara :
+
+a) datu transformācija;
+b) neparametriskie testi;
+c) robustās statistikas metodes.
 
 # Norādes priekš darba
 
