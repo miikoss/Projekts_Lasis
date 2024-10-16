@@ -7,6 +7,8 @@ a) datu transformācija;
 b) neparametriskie testi;
 c) robustās statistikas metodes.
 
+Ja dati nav normāli sadalīti, tas nozīmē, ka tie var būt izkaisīti vai satur daudz izņēmumu, kas apgrūtina secinājumu izdarīšanu.//kas un kā
+
 # Norādes priekš darba
 
 Izmantojot dotos datus, jāveic pēc Jūsu ieskatiem atbilstošās statistiskās analīzes, lai izanalizētu tos. Datu analīzes rezultāts jānoformē kā atskaite, kurā obligāti jābūt sekojošām sadaļām:
