@@ -1,0 +1,99 @@
+# Normalitātes Testu Rezultāti
+
+## Hexachlorobenzene
+- **Shapiro-Wilk normalitātes tests**:
+  - W/A = 0.92297
+  - p-vērtība = 2.646e-07
+- **Anderson-Darling normalitātes tests**:
+  - W/A = 3.1171
+  - p-vērtība = 7.48e-08
+
+---
+
+## HCH_gamma
+- **Shapiro-Wilk normalitātes tests**:
+  - W/A = 0.96000
+  - p-vērtība = 0.0002089
+- **Anderson-Darling normalitātes tests**:
+  - W/A = 1.6763
+  - p-vērtība = 0.0002558
+
+---
+
+## Heptachlor_Epoxide
+- **Shapiro-Wilk normalitātes tests**:
+  - W/A = 0.93324
+  - p-vērtība = 1.36e-06
+- **Anderson-Darling normalitātes tests**:
+  - W/A = 3.7707
+  - p-vērtība = 1.915e-09
+
+---
+
+## Dieldrin
+- **Shapiro-Wilk normalitātes tests**:
+  - W/A = 0.93347
+  - p-vērtība = 1.415e-06
+- **Anderson-Darling normalitātes tests**:
+  - W/A = 3.4278
+  - p-vērtība = 1.307e-08
+
+---
+
+## Endrin
+- **Shapiro-Wilk normalitātes tests**:
+  - W/A = 0.92418
+  - p-vērtība = 3.184e-07
+- **Anderson-Darling normalitātes tests**:
+  - W/A = 2.2511
+  - p-vērtība = 9.86e-06
+
+---
+
+## Total_Chlordane
+- **Shapiro-Wilk normalitātes tests**:
+  - W/A = 0.91612
+  - p-vērtība = 9.501e-08
+- **Anderson-Darling normalitātes tests**:
+  - W/A = 2.8389
+  - p-vērtība = 3.578e-07
+
+---
+
+## Total_DDT
+- **Shapiro-Wilk normalitātes tests**:
+  - W/A = 0.95866
+  - p-vērtība = 0.0001573
+- **Anderson-Darling normalitātes tests**:
+  - W/A = 1.3164
+  - p-vērtība = 0.001976
+
+---
+
+## Dioxin
+- **Shapiro-Wilk normalitātes tests**:
+  - W/A = 0.93565
+  - p-vērtība = 2.038e-06
+- **Anderson-Darling normalitātes tests**:
+  - W/A = 2.9315
+  - p-vērtība = 2.125e-07
+
+---
+
+## Total_Pesticides
+- **Shapiro-Wilk normalitātes tests**:
+  - W/A = 0.95436
+  - p-vērtība = 6.467e-05
+- **Anderson-Darling normalitātes tests**:
+  - W/A = 2.3006
+  - p-vērtība = 7.453e-06
+
+---
+
+## Total_PCBs
+- **Shapiro-Wilk normalitātes tests**:
+  - W/A = 0.95578
+  - p-vērtība = 8.636e-05
+- **Anderson-Darling normalitātes tests**:
+  - W/A = 2.9610
+  - p-vērtība = 1.799e-07
