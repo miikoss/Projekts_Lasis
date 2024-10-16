@@ -1,0 +1,16 @@
+# 1 Parametriskās metodes
+Parametriskās metodes pieņem, ka dati seko noteiktai sadalījuma formai, parasti normālai sadalījumam. Tās balstās uz populācijas parametriem, piemēram, vidējo un dispersiju. Galvenie parametrisko metožu piemēri ir:
+1. t-tests
+Mērķis: Salīdzina divu grupu vidējos rādītājus un nosaka, vai pastāv statistiski nozīmīga atšķirība starp tiem.
+Veidi:
+Neatkarīgais t-tests: Salīdzina divas neatkarīgas grupas.
+Saistītais t-tests: Salīdzina divas saistītas grupas (piemēram, pirms un pēc mērījumi).
+2. F-tests
+Mērķis: Salīdzina variances starp divām vai vairākām grupām, lai noteiktu, vai pastāv statistiski nozīmīgas atšķirības starp grupu vidējiem.
+Piemērs: ANOVA (analīze par varianci) ir F-testu veids, kas tiek izmantots salīdzināšanai starp vairākām grupām.
+# 2 Neparametriskās metodes
+Neparametriskās metodes nepieprasa, lai dati sekotu noteiktai sadalījuma formai. Tās ir piemērotas gadījumos, kad dati nav normāli sadalīti vai kad ir mazi paraugi. Galvenie neparametrisko metožu piemēri ir:
+1. Vilkoksona tests
+Mērķis: Salīdzina divu saistītu paraugu vidējos rādītājus, kad dati nav normāli sadalīti. Tas tiek izmantots kā alternatīva saistītajam t-testam.
+2. χ² tests (Chi-square tests)
+Mērķis: Salīdzina kvalitatīvus datus, lai noteiktu attiecības starp divām vai vairākām kategorijām. Tas tiek izmantots, lai novērtētu, vai novērotās frekvences atšķiras no gaidītajām frekvencēm.
