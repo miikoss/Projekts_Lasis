@@ -14,6 +14,14 @@ Galvenās atšķirības:
 Normāli sadalīti dati: Simetriski ap vidējo, veido zvanveida līkni; piemēram, cilvēku auguma mērījumi.
 Neparasti sadalīti dati: Asimetriski, var saturēt izteiktas virsotnes vai garus astes; piemēram, ienākumu sadalījums.
 
+Neparasto datu iezīmes:
+Asimetrija: Dati var būt labēji (pozitīvi) vai kreisi (negatīvi) asimetriski. Piemēram, ienākumu sadalījums parasti ir labēji asimetrisks, jo lielākā daļa cilvēku pelna vidēji, bet daži pelna ļoti daudz.
+Vairāku virsotņu klātbūtne: Dati var saturēt vairākas virsotnes (multimodāli), nevis vienu centrālo virsotni kā normālā sadalījumā. Piemēram, pētījumos par studentu sekmēm var būt divas virsotnes, ja grupā ir studenti ar augstām un zemas sekmes.
+Izteiktas astes: Dati var saturēt garas astes, kas nozīmē, ka ir daudz ekstremālu vērtību. Piemēram, dabas katastrofu gadījumos var būt daudz datu par ļoti augstām zaudējumu summām.
+Analīze un metodes:
+Neparametriskās metodes: Ja dati nav normāli sadalīti, izmanto neparametriskās statistikas metodes, piemēram, Mann-Whitney U tests vai Kruskal-Wallis tests.
+Datu transformācija: Dažreiz neparasti sadalītus datus var transformēt (piemēram, logaritmiskā transformācija), lai tie tuvotos normālajam sadalījumam.
+
 # 1 Parametriskās metodes
 Parametriskās metodes pieņem, ka dati seko noteiktai sadalījuma formai, parasti normālai sadalījumam. Tās balstās uz populācijas parametriem, piemēram, vidējo un dispersiju. Galvenie parametrisko metožu piemēri ir:
 1. t-tests
