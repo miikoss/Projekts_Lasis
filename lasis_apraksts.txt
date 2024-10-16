@@ -1,0 +1,15 @@
+Saja faila ir informacija 153 lasu paraugu kimisko analizi.
+Faila kolonnas:
+1: Kind - audzesanas veids
+2: Location - izcelsmes vieta
+3: Mirex - organiskas vielas koncetracija
+4: Hexachlorobenzene - organiskas vielas koncetracija
+5: HCH_gamma - organiskas vielas koncetracija
+6: Heptachlor_Epoxide - organiskas vielas koncetracija
+7: Dieldrin - organiskas vielas koncetracija
+8: Endrin - organiskas vielas koncetracija
+9: Total_Chlordane - organiskas vielas koncetracija
+10: Total_DDT - organiskas vielas koncetracija
+11: Dioxin - organiskas vielas koncetracija
+12: Total_Pesticides - organiskas vielas koncetracija
+13: Total_PCBs - organiskas vielas koncetracija
