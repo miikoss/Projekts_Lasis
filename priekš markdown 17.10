@@ -54,3 +54,167 @@ knitr::kable(aprakstosa_statistika_rounded, caption = "Aprakstošā Statistika (
 
 
 ```
+
+## *0. Ko tas nozīmē?*
+
+# 1. Datu sadalījuma noteikšana
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Ielādēt nepieciešamās bibliotēkas
+library(readxl)
+library(nortest)
+library(ggplot2)
+library(dplyr)
+library(knitr)
+
+# Uzstādām darba direktoriju (pielāgojiet atbilstoši savam datoram)
+setwd("C:/Users/ligai/Downloads")
+
+# Ielādējam datus no Excel faila
+dati = read_excel("lasis_dati.xlsx")
+
+# Parādīt pirmās datu rindas, lai saprastu to struktūru
+print(head(dati))
+
+# Inicializēt tukšus data.frame, lai uzkrātu rezultātus
+shapiro_results = data.frame()
+ad_results = data.frame()
+
+# Cikls cauri katrai skaitliskajai kolonnai analīzei un zīmēšanai
+for (kolonnas_nosaukums in colnames(dati)) {
+  vertibas = dati[[kolonnas_nosaukums]]  # Iegūt kolonnas vērtības
+  
+  # Pārbaudīt, vai kolonnā ir skaitliskas vērtības pirms analīzes
+  if (is.numeric(vertibas)) {
+    cat("\nAnalizējam:", kolonnas_nosaukums, "\n")
+    
+    # Veikt normalitātes testus
+    shapiro_tests = shapiro.test(vertibas)  # Shapiro-Wilk normalitātes tests
+    ad_tests = ad.test(vertibas)  # Anderson-Darling normalitātes tests
+
+    # Uzkrāt rezultātus Shapiro-Wilk testam
+    shapiro_results = rbind(shapiro_results, 
+                             data.frame(Kolonna = kolonnas_nosaukums,
+                                        W = shapiro_tests$statistic,
+                                        p_value = shapiro_tests$p.value))
+
+    # Uzkrāt rezultātus Anderson-Darling testam
+    ad_results = rbind(ad_results, 
+                       data.frame(Kolonna = kolonnas_nosaukums,
+                                  A = ad_tests$statistic,
+                                  p_value = ad_tests$p.value))
+
+  
+  } else {
+    cat(kolonnas_nosaukums, "nav skaitliska un tiks izlaista.\n")  # Ja kolonna nav skaitliska, izdrukājam ziņu
+  }
+}
+
+```
+
+```{r}
+cat("\n**Shapiro-Wilk normalitātes testi**\n")
+knitr::kable(shapiro_results, caption = "Shapiro-Wilk Testa Rezultāti")
+
+cat("\n**Anderson-Darling normalitātes testi**\n")
+knitr::kable(ad_results, caption = "Anderson-Darling Testa Rezultāti")
+```
+
+```{r}
+ # Izveidot histogrammu un parādīt to R Markdown dokumentā
+    hist(vertibas, main = paste("Histogramma par", kolonnas_nosaukums), 
+         xlab = kolonnas_nosaukums, breaks = 30)
+
+    # Izveidot QQ grafiku un parādīt to R Markdown dokumentā
+    qqnorm(vertibas, main = paste("QQ grafiks par", kolonnas_nosaukums))
+    qqline(vertibas, col = "red")
+    
+```
+
+## *1. Ko tas nozīmē?*
+
+# 2. Datu transformācija
+
+```{r}
+# Ielādēt nepieciešamās bibliotēkas
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(nortest)
+library(knitr)
+
+# Uzstādām darba direktoriju (pielāgojiet atbilstoši savam datoram)
+setwd("C:/Users/ligai/Downloads")
+
+# Ielādējam datus no Excel faila
+dati = read_excel("lasis_dati.xlsx")
+
+# 2. solis: Pārbaudīt datu struktūru
+cat("\n**Kolonnas nosaukumi:**\n")
+print(colnames(dati))  # Pārbaudīt kolonnu nosaukumus
+cat("\n**Datu struktūra:**\n")
+str(dati)              # Apskatīt datu struktūru
+
+# 3. solis: Pārliecināties, ka 'Location' eksistē
+if (!"Location" %in% colnames(dati)) {
+  stop("Kolonna 'Location' neeksistē datu kopā.")
+}
+
+# Pārvērst 'Location' par faktoru
+dati$Location = as.factor(dati$Location)
+
+# 4. solis: Datu transformācija un boxplotu izveide
+# Inicializēt tukšus data.frame, lai uzkrātu rezultātus
+shapiro_results = data.frame()
+ad_results = data.frame()
+
+for (kolonnas_nosaukums in colnames(dati)) {
+  vertibas = dati[[kolonnas_nosaukums]]
+  
+  # 4.1 solis: Normālības tests un transformācija, ja skaitlisks
+  if (is.numeric(vertibas) && all(vertibas > 0)) {
+    log_vertibas = log(vertibas)
+    
+    # Veikt normālības testus
+    shapiro_tests_log = shapiro.test(log_vertibas)
+    
+    # Uzkrāt rezultātus Shapiro-Wilk testam
+    shapiro_results = rbind(shapiro_results, 
+                             data.frame(Kolonna = kolonnas_nosaukums,
+                                        W = shapiro_tests_log$statistic,
+                                        p_value = shapiro_tests_log$p.value))
+    
+    # Pārliecināties, ka 'ad.test' ir definēts vai iekļauts no bibliotēkas
+    if (exists("ad.test")) {
+      ad_tests_log = ad.test(log_vertibas)
+      ad_results = rbind(ad_results, 
+                         data.frame(Kolonna = kolonnas_nosaukums,
+                                    A = ad_tests_log$statistic,
+                                    p_value = ad_tests_log$p.value))
+    } else {
+      warning("ad.test funkcija netika atrasta; tiek izlaists Anderson-Darling tests.")
+    }
+    
+    # 4.2 solis: Izveidot boxplotus
+    boxplot(vertibas ~ dati$Location,  # Aizstāt 'Location' ar izvēlēto grupēšanas mainīgo
+            main = paste("Boxplot of", kolonnas_nosaukums), 
+            xlab = "Atrašanās vieta", 
+            ylab = kolonnas_nosaukums)
+  }
+}
+
+# Izvadīt tabulas ar rezultātiem
+cat("\n**Shapiro-Wilk normalitātes testi**\n")
+shapiro_results_rounded = shapiro_results %>%
+  mutate(across(c(W, p_value), ~ round(., 4)))  # Noapaļo skaitļus līdz 4 decimālzīmēm
+knitr::kable(shapiro_results_rounded, caption = "Shapiro-Wilk Testa Rezultāti")
+
+cat("\n**Anderson-Darling normalitātes testi**\n")
+ad_results_rounded = ad_results %>%
+  mutate(across(c(A, p_value), ~ round(., 4)))  # Noapaļo skaitļus līdz 4 decimālzīmēm
+knitr::kable(ad_results_rounded, caption = "Anderson-Darling Testa Rezultāti")
+
+```
+
+## *2. Ko tas nozīmē?*
