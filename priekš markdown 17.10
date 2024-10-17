@@ -1,0 +1,56 @@
+---
+title: "Lašu datu atskaite"
+author: "Līga Irbe Mikosa; Aleksandrs Galaiskis; Diāna Rubene; Nele Bērziņa"
+date: "2024-10-17"
+output: word_document
+---
+
+# -1. Komunikācijas kanāli
+
+# 0. Datu deskriptīvā analīze
+
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+# Ielādējam nepieciešamās bibliotēkas
+library(dplyr)
+library(psych)
+library(writexl)
+library(readxl)  # Nepieciešams datu ielādei no Excel faila
+
+# Uzstādām darba direktoriju (pielāgojiet atbilstoši savam datoram)
+setwd("C:/Users/ligai/Downloads")
+
+# Ielādējam datus no Excel faila
+dati = read_excel("lasis_dati.xlsx")
+
+# Aprakstošā statistika (vidējais, mediāna, standartnovirze, minimums, maksimums, škerība, ekscess)
+aprakstosa_statistika = dati %>%
+  select(Mirex, Hexachlorobenzene, HCH_gamma, Heptachlor_Epoxide, Dieldrin,
+         Endrin, Total_Chlordane, Total_DDT, Dioxin, Total_Pesticides, Total_PCBs) %>%
+  psych::describe()
+
+# Pamatstatistika (minimālais, maksimālais, vidējais utt.)
+pamatraditaji = dati %>%
+  select(Mirex, Hexachlorobenzene, HCH_gamma, Heptachlor_Epoxide, Dieldrin,
+         Endrin, Total_Chlordane, Total_DDT, Dioxin, Total_Pesticides, Total_PCBs) %>%
+  summary()
+
+# Saglabājam rezultātus Excel failā ar divām lapām
+#write_xlsx(list("Aprakstošā Statistika" = as.data.frame(aprakstosa_statistika), 
+                #"Pamatrādītāji" = as.data.frame(pamatraditaji)), 
+           #path = "rezultati_lasis.xlsx")
+
+```
+
+```{r}
+# Noapaļojam vērtības Aprakstošajā Statistikā līdz 2 decimālzīmēm
+aprakstosa_statistika_rounded = as.data.frame(aprakstosa_statistika)
+aprakstosa_statistika_rounded = aprakstosa_statistika_rounded %>% 
+  mutate(across(where(is.numeric), ~round(., 2)))
+
+# Izvadām Aprakstošo Statistiku kā tabulu
+knitr::kable(aprakstosa_statistika_rounded, caption = "Aprakstošā Statistika (noapaļota līdz 2 decimālzīmēm)")
+
+#knitr::kable(as.data.frame(pamatraditaji), caption = "Pamatrādītāji")
+
+
+```
