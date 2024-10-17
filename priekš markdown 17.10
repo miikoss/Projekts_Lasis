@@ -7,6 +7,10 @@ output: word_document
 
 # -1. Komunikācijas kanāli
 
+### 1. <https://github.com/miikoss/Projekts_Lasis>
+
+### 2. whatsapp grupa
+
 # 0. Datu deskriptīvā analīze
 
 ```{r, echo=TRUE, message=FALSE, warning=FALSE}
@@ -128,7 +132,7 @@ knitr::kable(ad_results, caption = "Anderson-Darling Testa Rezultāti")
 
     # Izveidot QQ grafiku un parādīt to R Markdown dokumentā
     qqnorm(vertibas, main = paste("QQ grafiks par", kolonnas_nosaukums))
-    qqline(vertibas, col = "red")
+    qqline(vertibas, col = "pink")
     
 ```
 
